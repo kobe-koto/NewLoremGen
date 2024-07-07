@@ -1,0 +1,18 @@
+{
+  "name": "new-lorem-gen",
+  "description": "Brand new \"Lorem\" generator",
+  "author": "kobe-koto",
+  "license": "AGPL-3",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/generateWord.js",
+    "./generateFirstLetter": "./src/generateFirstLetter.js"
+  },
+  "keywords": [],
+  "homepage": "https://github.com/kobe-koto/NewLoremGen",
+  "bugs": "https://github.com/kobe-koto/NewLoremGen/issues",
+  "scripts": {
+    "demo": "node ./demo.js"
+  }
+}
