@@ -1,18 +1,22 @@
 {
   "name": "new-lorem-gen",
-  "description": "Brand new \"Lorem\" generator",
+  "description": "Generate realistic-sounding random words",
   "author": "kobe-koto",
   "license": "AGPL-3",
   "version": "1.0.0",
   "type": "module",
   "exports": {
-    ".": "./src/generateWord.js",
-    "./generateFirstLetter": "./src/generateFirstLetter.js"
+    ".": "./src/generateWord.ts",
+    "./generateFirstLetter": "./src/generateFirstLetter.ts"
   },
   "keywords": [],
   "homepage": "https://github.com/kobe-koto/NewLoremGen",
   "bugs": "https://github.com/kobe-koto/NewLoremGen/issues",
   "scripts": {
-    "demo": "node ./demo.js"
+    "demo": "node ./demo.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
   }
 }

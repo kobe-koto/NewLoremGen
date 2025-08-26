@@ -1,10 +1,10 @@
 /**
- * grab a random child from source array, with frequency if you fancy
- * @param {Array} source 
- * @param {Array|false} frequencies when set to `false`, just do little simple random.
- * @returns 
+ * Grabs a random element from a source array, with optional frequency weighting.
+ * @param source The source array to pick from.
+ * @param frequencies Optional array of frequencies corresponding to the source elements.
+ * @returns A random element from the source array.
  */
-export function getRandomElement(source, frequencies = false) {
+export function getRandomElement<T>(source: T[], frequencies: number[] | false = false): T {
     if (frequencies === false) {
         return source[Math.floor(Math.random() * source.length)];
     }

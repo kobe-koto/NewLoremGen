@@ -1,4 +1,9 @@
-export const syllableStructures = [
+export interface SyllableStructure {
+    structure: string;
+    frequency: number;
+}
+
+export const syllableStructures: SyllableStructure[] = [
     { structure: 'CV', frequency: 30 },
     { structure: 'CVC', frequency: 25 },
     { structure: 'VC', frequency: 15 },

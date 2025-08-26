@@ -1,15 +1,15 @@
-import generateSyllable from "./generateSyllable.js";
-import { vowels, consonants } from "./data/index.js";
+import generateSyllable from "./generateSyllable.ts";
+import { vowels } from "./data/index.ts";
 
-const isVowel = (char) => vowels.includes(char);
-const badEndings = ['j', 'q', 'v', 'w', 'x'];
+const isVowel = (char: string): boolean => vowels.includes(char);
+const badEndings: string[] = ['j', 'q', 'v', 'w', 'x'];
 
-export default function generateWord(minLength, maxLength, firstLetter) {
+export default function generateWord(minLength: number, maxLength: number, firstLetter: string): string {
 
-    let word = firstLetter;
+    let word: string = firstLetter;
 
     while (word.length < minLength || (word.length < maxLength && Math.random() > 0.25)) {
-        let syllable;
+        let syllable: string;
         do {
             syllable = generateSyllable();
         } while (

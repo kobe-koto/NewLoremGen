@@ -2,6 +2,8 @@
 
 A simple library for generating realistic-sounding random words. This is not your typical lorem ipsum generator; it uses a more sophisticated approach to create words that are pronounceable and follow the phonetic rules of natural languages.
 
+This project is written in TypeScript and needs to be compiled to JavaScript before it can be run.
+
 ## How it Works
 
 The word generation process is based on the concept of syllables. Instead of just randomly combining letters, NewLoremGen builds words from a set of predefined syllable structures. This ensures that the generated words have a natural rhythm and are easy to pronounce.
@@ -19,11 +21,23 @@ Here's a breakdown of the process:
 
 ## How to Use
 
-To use the library, you can import the `generateWord` function and call it with the desired minimum and maximum word length, and a starting letter.
+1.  **Compile the code:**
 
-```javascript
-import generateFirstLetter from './src/generateFirstLetter.js';
-import generateWord from './src/generateWord.js';
+    ```bash
+    npx tsc
+    ```
+
+2.  **Run the demo:**
+
+    ```bash
+    node dist/demo.js
+    ```
+
+To use the library in your own project, you can import the `generateWord` function from the compiled JavaScript files in the `dist` directory.
+
+```typescript
+import generateFirstLetter from './src/generateFirstLetter';
+import generateWord from './src/generateWord';
 
 const firstLetter = generateFirstLetter().toUpperCase();
 const word = generateWord(5, 10, firstLetter);
@@ -32,10 +46,11 @@ console.log(word);
 
 ## Files
 
-*   `demo.js`: An example of how to use the library.
-*   `src/generateWord.js`: The main function for generating words.
-*   `src/generateSyllable.js`: The function for generating syllables.
-*   `src/generateFirstLetter.js`: A helper function to generate a random first letter.
-*   `src/data/index.js`: Contains the vowels, consonants, and their frequencies.
-*   `src/data/syllableStructures.js`: Contains the syllable structures and their frequencies.
-*   `src/utils/getRandomElement.js`: A utility function for getting a random element from an array, with support for weighted randomness.
+*   `demo.ts`: An example of how to use the library.
+*   `src/generateWord.ts`: The main function for generating words.
+*   `src/generateSyllable.ts`: The function for generating syllables.
+*   `src/generateFirstLetter.ts`: A helper function to generate a random first letter.
+*   `src/data/index.ts`: Contains the vowels, consonants, and their frequencies.
+*   `src/data/syllableStructures.ts`: Contains the syllable structures and their frequencies.
+*   `src/utils/getRandomElement.ts`: A utility function for getting a random element from an array, with support for weighted randomness.
+*   `tsconfig.json`: The TypeScript configuration file.
