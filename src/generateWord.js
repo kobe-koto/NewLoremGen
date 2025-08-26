@@ -1,33 +1,31 @@
-import { getRandomElement } from "./utils/getRandomElement.js";
-import * as data from "./data/index.js"
+import generateSyllable from "./generateSyllable.js";
+import { vowels, consonants } from "./data/index.js";
 
+const isVowel = (char) => vowels.includes(char);
+const badEndings = ['j', 'q', 'v', 'w', 'x'];
 
 export default function generateWord(minLength, maxLength, firstLetter) {
 
     let word = firstLetter;
-    let lastWasMorpheme = false;
 
     while (word.length < minLength || (word.length < maxLength && Math.random() > 0.25)) {
-        let addMorpheme = !lastWasMorpheme && Math.random() < 0.3 && word.length + 2 <= maxLength;
-        if (addMorpheme) {
-            const morpheme = getRandomElement(data.morphemes, false);
-            if (word.length + morpheme.length <= maxLength) {
-                word += morpheme;
-                lastWasMorpheme = true;
-            }
-        } else {
-            const letter = (word.length % 2 === 0) ?
-                getRandomElement(data.consonants, data.consonantFrequencies) :
-                getRandomElement(data.vowels, data.vowelFrequencies);
-            if (word.length + letter.length <= maxLength) {
-                word += letter;
-                lastWasMorpheme = false;
-            }
-        }
+        let syllable;
+        do {
+            syllable = generateSyllable();
+        } while (
+            (isVowel(word.slice(-1)) && isVowel(syllable[0])) ||
+            (!isVowel(word.slice(-1)) && !isVowel(syllable[0]))
+        );
 
-        if (word.length >= maxLength) {
+        if (word.length + syllable.length <= maxLength) {
+            word += syllable;
+        } else {
             break;
         }
+    }
+
+    while (badEndings.includes(word.slice(-1)) && word.length > minLength) {
+        word = word.slice(0, -1);
     }
 
     return word.slice(0, maxLength);
